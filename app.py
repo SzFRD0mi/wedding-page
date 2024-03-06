@@ -1,12 +1,17 @@
-from flask import Flask
+from flask import Flask, render_template, request, redirect
 
 app = Flask(__name__)
+app.config['SEND_FILE_MAX_AGE_DEFAULT'] = 0
 
-@app.route("/")
+@app.route("/", methods=["GET", "POST"])
 def index():
-  return "Hello world!"
+  if request.method == "POST":
+    return redirect("webpage.html")
+  else:
+    print("rendering template")
+    return render_template("webpage.html")
 
 if __name__ == "__main__":
-  app.run()
+  app.run(debug=True)
 
 
