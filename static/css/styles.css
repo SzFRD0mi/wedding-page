@@ -1,11 +1,56 @@
 body {
   background-color: lightgray;
+  font-family: satisfy, sans-serif;
+  margin: 2rem 0;
+}
+
+label {
+  display: block;
+}
+
+.container {
+  display: grid;
+  justify-content: space-around;
+  align-items: center;
+  gap: 2rem;
+  padding: 0;
+  max-width: 100%;
+}
+
+.title {
+  justify-self: center;
+  font-weight: bold;
 }
 
 .video {
-  color: green;
+  align-self: auto;
+  justify-self: auto;
 }
 
-.countdown {
-  background-color: blue;
+.date {
+  justify-self: center;
+  text-align: center;
+  font-weight: bold;
+}
+
+#countdown span {
+  background: rgba(0,0,0,0);
+  color: #000;
+  font-size: 26px;
+  font-weight: normal;
+  text-align: center;
+  width: 25%;
+  display: block;
+  float: left;
+  border-right: 1px solid #FFF;
+}
+#countdown span:last-child {
+  border-right: 0;
+}
+
+.welcome {
+  font-family: yanone kaffeesatz, Helvetica, sans-serif;
+  padding: 5% 10%;
+  text-align: justify;
+  text-justify: inter-word;
 }
