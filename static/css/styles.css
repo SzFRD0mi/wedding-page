@@ -54,3 +54,22 @@ label {
   text-align: justify;
   text-justify: inter-word;
 }
+
+.locations {
+  display: flex;
+  flex-flow: column nowrap;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
+}
+
+.location_address {
+  font-family: yanone kaffeesatz, Helvetica, sans-serif;
+  text-align: center;
+}
+
+#zoldfasmap, #forromap iframe{
+  width: 90rem;
+  margin: 0;
+  padding: 0;
+}

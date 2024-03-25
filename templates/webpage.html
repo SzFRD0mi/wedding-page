@@ -59,7 +59,35 @@
         
       </div>
       <div class="container-item, locations">
+        <h3>Locations</h3>
+
+        <button class="btn location_address" type="button" data-bs-toggle="collapse" data-bs-target="#zoldfasMap" aria-expanded="false" aria-controls="zoldfasMap">
+          <h5>
+            <b>Zöldfás temple of Domaszék</b><br>
+            <i>Domaszék, külterület, 6781<br>
+              (46.252623948578005, 20.026307781176396)</i>
+          </h5>
+          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-caret-down-fill" viewBox="0 0 16 16">
+            <path d="M7.247 11.14 2.451 5.658C1.885 5.013 2.345 4 3.204 4h9.592a1 1 0 0 1 .753 1.659l-4.796 5.48a1 1 0 0 1-1.506 0z"/>
+          </svg>
+        </button>
+        <div class="collapse" id="zoldfasMap">
+          <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2758.8863707455344!2d20.023269612285485!3d46.25248668037803!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x474486d3d828ef99%3A0x8334225b2afb52fa!2zRG9tYXN6w6lraSBaw7ZsZGbDoXMgdGVtcGxvbQ!5e0!3m2!1shu!2shu!4v1711358927470!5m2!1shu!2shu" style="border:0;" allowfullscreen loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+        </div>
         
+        <button class="btn location_address" type="button" data-bs-toggle="collapse" data-bs-target="#forroMap">
+          <h5>
+            <b>Forró Resthouse of Röszke</b><br>
+            <i>Röszke, I. körzet 4, 6758<br>
+            (46.19902664370653, 20.013929187338636)</i>
+          </h5>
+          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-caret-down-fill" viewBox="0 0 16 16">
+            <path d="M7.247 11.14 2.451 5.658C1.885 5.013 2.345 4 3.204 4h9.592a1 1 0 0 1 .753 1.659l-4.796 5.48a1 1 0 0 1-1.506 0z"/>
+          </svg>
+        </button>
+        <div class="collapse" id="forroMap">
+          <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2761.582460377426!2d20.01116651228331!3d46.198866984000524!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x474484410f86ccb9%3A0xabc5c24271cec956!2zRm9ycsOzIEZvZ2Fkw7MgUsO2c3prZQ!5e0!3m2!1shu!2shu!4v1711358465770!5m2!1shu!2shu" style="border:0;" allowfullscreen loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+        </div>
       </div>
       <div class="container-item, travel">
         
@@ -72,6 +100,7 @@
       </footer>
     </div>
 
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
     <script src="{{ url_for('static', filename='js/script.js') }}"></script>
   </body>
