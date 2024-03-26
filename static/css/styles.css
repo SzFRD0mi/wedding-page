@@ -4,12 +4,9 @@ body {
   margin: 2rem 0;
 }
 
-label {
-  display: block;
-}
-
 .container {
-  display: grid;
+  display: flex;
+  flex-flow: column nowrap;
   justify-content: space-around;
   align-items: center;
   gap: 2rem;
@@ -17,8 +14,13 @@ label {
   max-width: 100%;
 }
 
+.container-item {
+  display: flex;
+  flex-direction: column;
+  width: 100%
+}
+
 .title {
-  justify-self: center;
   font-weight: bold;
 }
 
@@ -33,10 +35,14 @@ label {
   font-weight: bold;
 }
 
+.countdown {
+  width: 80%;
+}
+
 #countdown span {
   background: rgba(0,0,0,0);
   color: #000;
-  font-size: 26px;
+  font-size: 18px;
   font-weight: normal;
   text-align: center;
   width: 25%;
@@ -68,8 +74,29 @@ label {
   text-align: center;
 }
 
-#zoldfasmap, #forromap iframe{
-  width: 90rem;
+#zoldfasPic, #forroPic {
+  border-radius: 1rem;
+}
+
+#zoldfasMap, #forroMap {
+  width: 60%;
+  height: 15rem;
   margin: 0;
   padding: 0;
+}
+
+.form {
+  align-items: center;
+}
+.form form{
+  font-family: yanone kaffeesatz, Helvetica, sans-serif;
+  display: flex;
+  flex-direction: column;
+  flex: 1 0 auto;
+  gap: 2rem;
+  width: 70%;
+}
+
+.attendee1 {
+  display: none;
 }

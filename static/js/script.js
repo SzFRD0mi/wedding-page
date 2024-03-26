@@ -1,5 +1,7 @@
-document.addEventListener('DOMContentLoaded', function() {
+document.addEventListener("DOMContentLoaded", function() {
   displayCountdown();
+  document.querySelector("#question1-yes").addEventListener("click", showQuestionare);
+  document.querySelector("#question1-no").addEventListener("click", hideQuestionare);
 });
 
 function displayCountdown() {
@@ -24,4 +26,12 @@ function displayCountdown() {
       countDownDisplay.innerHTML = "Wedding started!";
     }
   }, 1000);
+}
+
+function showQuestionare() {
+  document.querySelector(".attendee1").style.display = "block";
+}
+
+function hideQuestionare() {
+  document.querySelector(".attendee1").style.display = "none";
 }
