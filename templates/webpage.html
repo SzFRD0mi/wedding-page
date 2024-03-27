@@ -24,7 +24,7 @@
       <div class="container-item quote">
         <figure class="text-center">
           <blockquote class="blockquote">
-            <p>A well-known quote, contained in a blockquote element.</p>
+            <div>A well-known quote, contained in a blockquote element.</div>
           </blockquote>
           <figcaption class="blockquote-footer">
             Someone famous in <cite title="Source Title">Source Title</cite>
@@ -36,21 +36,21 @@
         <h3>Saturday</h3>
       </div>
       <div class="container-item countdown">
-        <p id="countdown"></p>
+        <p id="countdown"></div>
       </div>
       <div class="container-item welcome">
-        <p>
+        <div>
           Lorem ipsum, dolor sit amet consectetur adipisicing elit. Cupiditate doloremque sint inventore quam ea dicta, magnam neque saepe cumque numquam consequuntur dolorum quia id veniam architecto beatae, earum accusamus! Alias?
-        </p>
-        <p>
+        </div>
+        <div>
           Lorem ipsum, dolor sit amet consectetur adipisicing elit. Eveniet non sit cupiditate repellat, voluptatem ut distinctio accusantium ea, at quos provident tempore iusto consectetur tenetur aliquid autem cum hic vel.
           Ut hic nulla suscipit assumenda harum quibusdam quis iusto molestias doloribus iste, consequatur excepturi doloremque possimus laborum nam numquam natus tempora nemo, rem quisquam sequi. Soluta molestiae voluptatibus a ducimus.
           Laborum earum modi harum molestias nobis repudiandae qui nam praesentium sequi, iste commodi impedit accusamus labore incidunt esse temporibus asperiores pariatur alias. Quas quod sint est saepe, tenetur quisquam explicabo.
-        </p>
-        <p>
+        </div>
+        <div>
           Lorem ipsum dolor sit amet consectetur adipisicing elit. Nostrum reiciendis minus dolorum repudiandae consectetur doloribus ipsa assumenda porro quo quaerat dolor earum similique blanditiis aperiam eos, ad accusamus corrupti odit.
           Praesentium, provident! Veritatis pariatur est atque repellat. Doloremque, quia dolore nihil nulla officiis hic quaerat quasi iusto, error minus ducimus consequatur, fuga praesentium. Quam atque voluptate aperiam mollitia repellat doloremque.
-        </p>
+        </div>
       </div>
       <div class="container-item timeline">
         
@@ -95,20 +95,72 @@
       <div class="container-item form">
         <form action="/questions" method="post">
           <h4 style="text-align: center;">Questionnaire</h4>
-          <div class="question1">
-            <p>Will you attend the wedding?</p>
-            <input type="radio" class="btn-check" name="options-base" id="question1-yes" autocomplete="off">
-            <label class="btn" for="question1-yes">Yes</label>
-            <input type="radio" class="btn-check" name="options-base" id="question1-no" autocomplete="off">
-            <label class="btn" for="question1-no">No</label>
-          </div>
-          <div class="attendee1">
-            <div class="form-floating mb-3">
-              <input type="text" class="form-control" id="attendee1-name">
-              <label for="attendee1-name">Name</label>
+          <div class="questions">
+            <div class="question-attend">
+              <div>Will you attend the wedding?</div>
+              <input type="radio" class="btn-check" name="attend-radio" id="question-attend-yes" autocomplete="off">
+              <label class="btn" for="question-attend-yes">Yes</label>
+              <input type="radio" class="btn-check" name="attend-radio" id="question-attend-no" autocomplete="off">
+              <label class="btn" for="question-attend-no">No</label>
             </div>
+            <div id="questionare-description">
+              <div>Please complete the below questionaire to your best knowledge and submit it using the Save button at the end.</div>
+              <div>If you would like to change your answers in the future please reach out to us!</div>
+            </div>
+            <div class="question question-name">
+              <div class="form-floating mb-3">
+                <input type="text" class="form-control" id="name">
+                <label for="name">Name</label>
+              </div>
+            </div>
+            <div class="question question-have-allergies">
+              <div>Do you have any food allergies?</div>
+              <input type="radio" class="btn-check" name="allergies-radio" id="question-have-allergies-yes" autocomplete="off">
+              <label class="btn" for="question-have-allergies-yes">Yes</label>
+              <input type="radio" class="btn-check" name="allergies-radio" id="question-have-allergies-no" autocomplete="off">
+              <label class="btn" for="question-have-allergies-no">No</label>
+            </div>
+            <div class="question question-allergies">
+              <div class="form-floating mb-3">
+                <input type="text" class="form-control" id="allergies">
+                <label for="allergies">Allergies</label>
+              </div>
+            </div>
+            <div class="question question-partner">
+              <div>Will you bring a partner?</div>
+              <input type="radio" class="btn-check" name="partner-radio" id="question-partner-yes" autocomplete="off">
+              <label class="btn" for="question-partner-yes">Yes</label>
+              <input type="radio" class="btn-check" name="partner-radio" id="question-partner-no" autocomplete="off">
+              <label class="btn" for="question-partner-no">No</label>
+            </div>
+            <div class="question question-partner-name">
+              <div class="form-floating mb-3">
+                <input type="text" class="form-control" id="partner-name">
+                <label for="partner-name">Name</label>
+              </div>
+            </div>
+            <div class="question question-partner-have-allergies">
+              <div>Does your partner have any food allergies?</div>
+              <input type="radio" class="btn-check" name="partner-allergies-radio" id="question-partner-have-allergies-yes" autocomplete="off">
+              <label class="btn" for="question-partner-have-allergies-yes">Yes</label>
+              <input type="radio" class="btn-check" name="partner-allergies-radio" id="question-partner-have-allergies-no" autocomplete="off">
+              <label class="btn" for="question-partner-have-allergies-no">No</label>
+            </div>
+            <div class="question question-partner-allergies">
+              <div class="form-floating mb-3">
+                <input type="text" class="form-control" id="partner-allergies">
+                <label for="partner-allergies">Allergies</label>
+              </div>
+            </div>
+            <div class="question question-accommodation">
+              <div>Would you like accommodation?</div>
+              <input type="radio" class="btn-check" name="accommodation-radio" id="question-accommodation-yes" autocomplete="off">
+              <label class="btn" for="question-accommodation-yes">Yes</label>
+              <input type="radio" class="btn-check" name="accommodation-radio" id="question-accommodation-no" autocomplete="off">
+              <label class="btn" for="question-accommodation-no">No</label>
+            </div>
+            <button id="submit-button" class="btn btn-outline-dark" type="submit">Save</button>
           </div>
-          
         </form>
       </div>
       <footer class="container-item contact-us">

@@ -35,6 +35,7 @@ body {
   font-weight: bold;
 }
 
+/* === Countdown Styles === */
 .countdown {
   width: 80%;
 }
@@ -54,6 +55,7 @@ body {
   border-right: 0;
 }
 
+/* === Welcome Message Styles === */
 .welcome {
   font-family: yanone kaffeesatz, Helvetica, sans-serif;
   padding: 5% 10%;
@@ -61,6 +63,7 @@ body {
   text-justify: inter-word;
 }
 
+/* === Locations Styles === */
 .locations {
   display: flex;
   flex-flow: column nowrap;
@@ -85,6 +88,7 @@ body {
   padding: 0;
 }
 
+/* === Form Styles === */
 .form {
   align-items: center;
 }
@@ -93,10 +97,26 @@ body {
   display: flex;
   flex-direction: column;
   flex: 1 0 auto;
-  gap: 2rem;
   width: 70%;
 }
 
-.attendee1 {
-  display: none;
+#questionare-description {
+  text-align: justify;
+  margin: 1rem 0;
+}
+
+.questions {
+  display: flex;
+  flex-direction: column;
+  margin: 1rem;
+}
+
+.question {
+  margin: 1rem 0;
+}
+
+#submit-button {
+  width: 80%;
+  align-self: center;
+  margin-top: 1rem;
 }
