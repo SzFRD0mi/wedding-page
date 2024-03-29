@@ -1,7 +1,9 @@
+
 document.addEventListener("DOMContentLoaded", function() {
   displayCountdown();
-  hideQuestionare()
 
+// event listeners related to the questionare
+  hideQuestionare()
   document.querySelector("#question-attend-yes").addEventListener("click", showQuestionare);
   document.querySelector("#question-attend-no").addEventListener("click", hideQuestionare);
 
@@ -13,6 +15,13 @@ document.addEventListener("DOMContentLoaded", function() {
 
   document.querySelector("#question-partner-have-allergies-yes").addEventListener("click", showPartnerAllergiesInput);
   document.querySelector("#question-partner-have-allergies-no").addEventListener("click", hidePartnerAllergiesInput);
+
+  // if form validation fails, prevent submittion
+  document.querySelector("#form-questionare").addEventListener("submit", function(event) {
+    if (!validateUserInput()) {
+      event.preventDefault();
+    }
+  });
 });
 
 function displayCountdown() {
@@ -90,4 +99,39 @@ function showPartnerAllergiesInput() {
 function hidePartnerAllergiesInput() {
   document.querySelector("#partner-allergies").value="";
   document.querySelector(".question-partner-allergies").style.display = "none";
+}
+
+function validateUserInput(event) {
+
+  // check if first answer is checked
+  if (!document.querySelector("#question-attend-yes").checked && !document.querySelector("#question-attend-no").checked) {
+    showAlert();
+    return false;
+  }
+
+  if (document.querySelector("#question-attend-no").checked) {
+    return true;
+  }
+
+  // check if name is filled out and valid
+  if (!checkName()) {
+    return false;
+  }
+
+  // check if third answer is checked
+  if (!document.querySelector("#question-have-allergies-yes").checked && !document.querySelector("#question-have-allergies-no").checked) {
+    document.querySelector("#apology-allergies").style.display = "block";
+    return false;
+  }
+  
+  // check if third answer is checked
+
+
+    // check if allergies field is filled
+  return true;
+}
+
+function showAlert() {
+  document.querySelector("#alert-collapse").classList.remove("hide");
+  document.querySelector("#alert-collapse").classList.add("show");
 }
