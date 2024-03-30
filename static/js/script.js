@@ -2,6 +2,17 @@
 document.addEventListener("DOMContentLoaded", function() {
   displayCountdown();
 
+  // DISPLAYING SUCCESS MESSAGE
+  const successMessage = localStorage.getItem('successMessage');
+  if (successMessage) {
+    document.querySelector("#alert-collapse").classList.add("success");
+    showAlert(successMessage);
+    setTimeout(function() {
+      document.querySelector("#alert-collapse").classList.remove("success");
+    }, 3000);
+    localStorage.removeItem('successMessage');
+  }
+
 // event listeners related to the questionare
   hideQuestionare()
   document.querySelector("#question-attend-yes").addEventListener("click", showQuestionare);
@@ -16,10 +27,25 @@ document.addEventListener("DOMContentLoaded", function() {
   document.querySelector("#question-partner-have-allergies-yes").addEventListener("click", showPartnerAllergiesInput);
   document.querySelector("#question-partner-have-allergies-no").addEventListener("click", hidePartnerAllergiesInput);
 
+  const fields = [document.querySelector("#name"), 
+                  document.querySelector("#allergies"), 
+                  document.querySelector("#partner-name"), 
+                  document.querySelector("#partner-allergies")];
+  for (let field of fields) {
+    field.addEventListener("input", function() {
+      if(field.value.trim() != "") {
+        field.style.borderColor = "var(--bs-body-bg)";
+      }
+    });
+  }
+
   // if form validation fails, prevent submittion
   document.querySelector("#form-questionare").addEventListener("submit", function(event) {
     if (!validateUserInput()) {
       event.preventDefault();
+    }
+    else{
+      localStorage.setItem("successMessage", "Form submitted successfully!");
     }
   });
 });
@@ -101,37 +127,82 @@ function hidePartnerAllergiesInput() {
   document.querySelector(".question-partner-allergies").style.display = "none";
 }
 
+/* === VALIDATION === */
 function validateUserInput(event) {
 
-  // check if first answer is checked
-  if (!document.querySelector("#question-attend-yes").checked && !document.querySelector("#question-attend-no").checked) {
-    showAlert();
+  let invalid = false;
+
+  if (document.querySelector("#alert-collapse").classList.contains("success")) {
+    document.querySelector("#alert-collapse").classList.remove("success");
+  }
+
+  if (!isAnswerChecked("#question-attend-yes", "#question-attend-no")) {
+    invalid = true;
+  }
+
+  if (document.querySelector("#question-attend-yes").checked) {
+    
+    if (!checkField("#name")) {
+      invalid = true;
+    }
+
+    if (!isAnswerChecked("#question-have-allergies-yes", "#question-have-allergies-no")) {
+      invalid = true;
+    }
+
+    if (document.querySelector("#question-have-allergies-yes").checked) {
+      if (!checkField("#allergies")) {
+      invalid = true;
+      }
+    }
+
+    if (!isAnswerChecked("#question-partner-yes", "#question-partner-no")) {
+      invalid = true;
+    }
+
+    if (document.querySelector("#question-partner-yes").checked) {
+      if (!checkField("#partner-name")) {
+      invalid = true;
+      }
+      if (!isAnswerChecked("#question-partner-have-allergies-yes", "#question-partner-have-allergies-no")) {
+        invalid = true;
+      }
+      if (document.querySelector("#question-partner-have-allergies-yes").checked) {
+        if (!checkField("#partner-allergies")) {
+          invalid = true;
+          }
+      }
+    }
+    if (!isAnswerChecked("#question-accommodation-yes", "#question-accommodation-no")) {
+      invalid = true;
+    }
+  }
+
+  if (invalid) {
+    showAlert("Please asnwer every question");
     return false;
-  }
-
-  if (document.querySelector("#question-attend-no").checked) {
-    return true;
-  }
-
-  // check if name is filled out and valid
-  if (!checkName()) {
-    return false;
-  }
-
-  // check if third answer is checked
-  if (!document.querySelector("#question-have-allergies-yes").checked && !document.querySelector("#question-have-allergies-no").checked) {
-    document.querySelector("#apology-allergies").style.display = "block";
-    return false;
-  }
-  
-  // check if third answer is checked
-
-
-    // check if allergies field is filled
+  }  
   return true;
 }
 
-function showAlert() {
-  document.querySelector("#alert-collapse").classList.remove("hide");
+function isAnswerChecked(radioButtonId1, radioButtonId2) {
+  if (!document.querySelector(radioButtonId1).checked && !document.querySelector(radioButtonId2).checked) {
+    return false;
+  }
+  return true;
+}
+
+function showAlert(message) {
+  document.querySelector("#alert-message").innerHTML = message;
   document.querySelector("#alert-collapse").classList.add("show");
+
+  setTimeout(function() {document.querySelector("#alert-collapse").classList.remove("show")}, 3000);
+}
+
+function checkField(fieldId) {
+  if (document.querySelector(fieldId).value.trim() == "") {
+    document.querySelector(fieldId).style.borderColor = "red";
+    return false;
+  }
+  return true;
 }
