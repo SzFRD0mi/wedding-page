@@ -7,7 +7,7 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
     <link href="https://fonts.googleapis.com/css2?family=Satisfy&family=Yanone+Kaffeesatz:wght@200..700&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Satisfy&display=swap" rel="stylesheet">
-    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/styles.css') }}">
+    <link rel="stylesheet" type="text/css" href="static/css/styles.css">
   </head>
   <body>
     <div class="alert collapse" id="alert-collapse">
@@ -21,7 +21,7 @@
       <div class="container-item video">
         <div class="embed-responsive embed-responsive-16by9">
           <video class="w-100" autoplay loop muted>
-            <source src="static\videos\demo.mp4" type="video/mp4">
+            <source src="static/videos/demo.mp4" type="video/mp4">
           </video>
         </div>
       </div>
@@ -40,54 +40,50 @@
         <h3>Saturday</h3>
       </div>
       <div class="container-item countdown">
-        <p id="countdown"></div>
       </div>
       <div class="container-item welcome">
-        <div>
+        <p>
           Lorem ipsum, dolor sit amet consectetur adipisicing elit. Cupiditate doloremque sint inventore quam ea dicta, magnam neque saepe cumque numquam consequuntur dolorum quia id veniam architecto beatae, earum accusamus! Alias?
-        </div>
-        <div>
-          Lorem ipsum, dolor sit amet consectetur adipisicing elit. Eveniet non sit cupiditate repellat, voluptatem ut distinctio accusantium ea, at quos provident tempore iusto consectetur tenetur aliquid autem cum hic vel.
-          Ut hic nulla suscipit assumenda harum quibusdam quis iusto molestias doloribus iste, consequatur excepturi doloremque possimus laborum nam numquam natus tempora nemo, rem quisquam sequi. Soluta molestiae voluptatibus a ducimus.
-          Laborum earum modi harum molestias nobis repudiandae qui nam praesentium sequi, iste commodi impedit accusamus labore incidunt esse temporibus asperiores pariatur alias. Quas quod sint est saepe, tenetur quisquam explicabo.
-        </div>
-        <div>
+        </p>
+        <p>
           Lorem ipsum dolor sit amet consectetur adipisicing elit. Nostrum reiciendis minus dolorum repudiandae consectetur doloribus ipsa assumenda porro quo quaerat dolor earum similique blanditiis aperiam eos, ad accusamus corrupti odit.
           Praesentium, provident! Veritatis pariatur est atque repellat. Doloremque, quia dolore nihil nulla officiis hic quaerat quasi iusto, error minus ducimus consequatur, fuga praesentium. Quam atque voluptate aperiam mollitia repellat doloremque.
-        </div>
+        </p>
       </div>
       <div class="container-item timeline">
         
       </div>
       <div class="container-item locations">
         <h3>Locations</h3>
-
-        <img id="zoldfasPic" src="static\images\zoldfas.jpg" alt="Zoldfas temple" width="65%">
-        <button class="btn location_address" type="button" data-bs-toggle="collapse" data-bs-target="#zoldfasMap" aria-expanded="false" aria-controls="zoldfasMap">
+        <div class="location" id="location-zoldfas">
+          <img id="zoldfasPic" src="static/images/zoldfas.jpg" alt="Zoldfas temple">
           <h5>
             <b>Zöldfás temple of Domaszék</b><br>
             <i>Domaszék, külterület, 6781</i>
           </h5>
-          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-caret-down-fill" viewBox="0 0 16 16">
-            <path d="M7.247 11.14 2.451 5.658C1.885 5.013 2.345 4 3.204 4h9.592a1 1 0 0 1 .753 1.659l-4.796 5.48a1 1 0 0 1-1.506 0z"/>
-          </svg>
-        </button>
-        <div class="collapse" id="zoldfasMap">
-          <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2758.8863707455344!2d20.023269612285485!3d46.25248668037803!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x474486d3d828ef99%3A0x8334225b2afb52fa!2zRG9tYXN6w6lraSBaw7ZsZGbDoXMgdGVtcGxvbQ!5e0!3m2!1shu!2shu!4v1711358927470!5m2!1shu!2shu" style="border:0;" width="100%" height="100%" allowfullscreen loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+          <button class="btn" type="button" data-bs-toggle="collapse" data-bs-target="#zoldfasMap" aria-expanded="false" aria-controls="zoldfasMap">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-caret-down-fill" viewBox="0 0 16 16">
+              <path d="M7.247 11.14 2.451 5.658C1.885 5.013 2.345 4 3.204 4h9.592a1 1 0 0 1 .753 1.659l-4.796 5.48a1 1 0 0 1-1.506 0z"/>
+            </svg>
+          </button>
+          <div class="collapse" id="zoldfasMap">
+            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2758.8863707455344!2d20.023269612285485!3d46.25248668037803!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x474486d3d828ef99%3A0x8334225b2afb52fa!2zRG9tYXN6w6lraSBaw7ZsZGbDoXMgdGVtcGxvbQ!5e0!3m2!1shu!2shu!4v1711358927470!5m2!1shu!2shu" style="border:0;" allowfullscreen loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+          </div>
         </div>
-        
-        <img id="forroPic" src="static\images\forro.jpg" alt="Forro resthouse" width="65%">
-        <button class="btn location_address" type="button" data-bs-toggle="collapse" data-bs-target="#forroMap">
+        <div class="location" id="location-forro">
+          <img id="forroPic" src="static/images/forro.jpg" alt="Forro resthouse">
           <h5>
             <b>Forró Resthouse of Röszke</b><br>
             <i>Röszke, I. körzet 4, 6758</i>
           </h5>
-          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-caret-down-fill" viewBox="0 0 16 16">
-            <path d="M7.247 11.14 2.451 5.658C1.885 5.013 2.345 4 3.204 4h9.592a1 1 0 0 1 .753 1.659l-4.796 5.48a1 1 0 0 1-1.506 0z"/>
-          </svg>
-        </button>
-        <div class="collapse" id="forroMap">
-          <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2761.582460377426!2d20.01116651228331!3d46.198866984000524!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x474484410f86ccb9%3A0xabc5c24271cec956!2zRm9ycsOzIEZvZ2Fkw7MgUsO2c3prZQ!5e0!3m2!1shu!2shu!4v1711358465770!5m2!1shu!2shu" style="border:0;" width="100%" height="100%" allowfullscreen loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+          <button class="btn" type="button" data-bs-toggle="collapse" data-bs-target="#forroMap">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-caret-down-fill" viewBox="0 0 16 16">
+              <path d="M7.247 11.14 2.451 5.658C1.885 5.013 2.345 4 3.204 4h9.592a1 1 0 0 1 .753 1.659l-4.796 5.48a1 1 0 0 1-1.506 0z"/>
+            </svg>
+          </button>
+          <div class="collapse" id="forroMap">
+            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2761.582460377426!2d20.01116651228331!3d46.198866984000524!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x474484410f86ccb9%3A0xabc5c24271cec956!2zRm9ycsOzIEZvZ2Fkw7MgUsO2c3prZQ!5e0!3m2!1shu!2shu!4v1711358465770!5m2!1shu!2shu" style="border:0;" allowfullscreen loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+          </div>
         </div>
       </div>
       <div class="container-item travel">
@@ -100,67 +96,67 @@
         <form action="/" method="post" id="form-questionare">
           <h4 style="text-align: center;">Questionnaire</h4>
           <div class="questions">
-            <div class="question-attend">
-              <div>Will you attend the wedding?</div>
-              <input type="radio" class="btn-check" name="attend-radio" id="question-attend-yes" autocomplete="off">
-              <label class="btn" for="question-attend-yes">Yes</label>
-              <input type="radio" class="btn-check" name="attend-radio" id="question-attend-no" autocomplete="off">
-              <label class="btn" for="question-attend-no">No</label>
-            </div>
             <div id="questionare-description">
               <div>Please complete the below questionaire to your best knowledge and submit it using the Save button at the end.</div>
-              <div>If you would like to change your answers in the future please reach out to us!</div>
+              <div>If you would like to change your answers in the future please use the exact same name that you previously used!</div>
             </div>
             <div class="question question-name">
               <div class="form-floating mb-3">
-                <input type="text" class="form-control" id="name" >
-                <label for="name">Name</label>
+                <input type="text" class="form-control" name="name" id="name">
+                <label for="name">Full Name</label>
               </div>
+            </div>
+            <div class="question question-attend">
+              <div>Will you attend the wedding?</div>
+              <input type="radio" class="btn-check" name="attend-radio" id="question-attend-yes" value="yes">
+              <label class="btn" for="question-attend-yes">Yes</label>
+              <input type="radio" class="btn-check" name="attend-radio" id="question-attend-no" value="no">
+              <label class="btn" for="question-attend-no">No</label>
             </div>
             <div class="question question-have-allergies">
               <div>Do you have any food allergies?</div>
-              <input type="radio" class="btn-check" name="allergies-radio" id="question-have-allergies-yes" autocomplete="off">
+              <input type="radio" class="btn-check" name="allergies-radio" id="question-have-allergies-yes" value="yes">
               <label class="btn" for="question-have-allergies-yes">Yes</label>
-              <input type="radio" class="btn-check" name="allergies-radio" id="question-have-allergies-no" autocomplete="off">
+              <input type="radio" class="btn-check" name="allergies-radio" id="question-have-allergies-no" value="no">
               <label class="btn" for="question-have-allergies-no">No</label>
             </div>
             <div class="question question-allergies">
               <div class="form-floating mb-3">
-                <input type="text" class="form-control" id="allergies" >
+                <input type="text" class="form-control" name="allergies" id="allergies">
                 <label for="allergies">Allergies</label>
               </div>
             </div>
             <div class="question question-partner">
               <div>Will you bring a partner?</div>
-              <input type="radio" class="btn-check" name="partner-radio" id="question-partner-yes" autocomplete="off">
+              <input type="radio" class="btn-check" name="partner-radio" id="question-partner-yes" value="yes">
               <label class="btn" for="question-partner-yes">Yes</label>
-              <input type="radio" class="btn-check" name="partner-radio" id="question-partner-no" autocomplete="off">
+              <input type="radio" class="btn-check" name="partner-radio" id="question-partner-no" value="no">
               <label class="btn" for="question-partner-no">No</label>
             </div>
             <div class="question question-partner-name">
               <div class="form-floating mb-3">
-                <input type="text" class="form-control" id="partner-name" >
+                <input type="text" class="form-control" name="partner-name" id="partner-name" >
                 <label for="partner-name">Name</label>
               </div>
             </div>
             <div class="question question-partner-have-allergies">
               <div>Does your partner have any food allergies?</div>
-              <input type="radio" class="btn-check" name="partner-allergies-radio" id="question-partner-have-allergies-yes" autocomplete="off">
+              <input type="radio" class="btn-check" name="partner-allergies-radio" id="question-partner-have-allergies-yes" value="yes">
               <label class="btn" for="question-partner-have-allergies-yes">Yes</label>
-              <input type="radio" class="btn-check" name="partner-allergies-radio" id="question-partner-have-allergies-no" autocomplete="off">
+              <input type="radio" class="btn-check" name="partner-allergies-radio" id="question-partner-have-allergies-no" value="no">
               <label class="btn" for="question-partner-have-allergies-no">No</label>
             </div>
             <div class="question question-partner-allergies">
               <div class="form-floating mb-3">
-                <input type="text" class="form-control" id="partner-allergies" >
+                <input type="text" class="form-control" name="partner-allergies" id="partner-allergies">
                 <label for="partner-allergies">Allergies</label>
               </div>
             </div>
             <div class="question question-accommodation">
               <div>Would you like accommodation?</div>
-              <input type="radio" class="btn-check" name="accommodation-radio" id="question-accommodation-yes" autocomplete="off">
+              <input type="radio" class="btn-check" name="accommodation-radio" id="question-accommodation-yes" value="yes">
               <label class="btn" for="question-accommodation-yes">Yes</label>
-              <input type="radio" class="btn-check" name="accommodation-radio" id="question-accommodation-no" autocomplete="off">
+              <input type="radio" class="btn-check" name="accommodation-radio" id="question-accommodation-no" value="no">
               <label class="btn" for="question-accommodation-no">No</label>
             </div>
             <button id="submit-button" class="btn btn-outline-dark" type="submit">Save</button>
@@ -174,6 +170,6 @@
 
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
-    <script src="{{ url_for('static', filename='js/script.js') }}"></script>
+    <script src="static/js/script.js"></script>
   </body>
 </html>

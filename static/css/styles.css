@@ -1,84 +1,88 @@
 body {
   background-color: lightgray;
   font-family: satisfy, sans-serif;
-  margin: 2rem 0;
+  margin: 0;
+  padding: 0;
 }
 
 .container {
   display: flex;
   flex-flow: column nowrap;
-  justify-content: space-around;
+  justify-content: space-between;
   align-items: center;
-  gap: 2rem;
+  margin: 2rem 0;
   padding: 0;
+  gap: 2rem;
   max-width: 100%;
+  min-width: 250px;
 }
 
 .container-item {
   display: flex;
-  flex-direction: column;
-  width: 100%
+  flex-flow: column nowrap;
+  width: 100%;
 }
 
 .title {
   font-weight: bold;
 }
 
-.video {
-  align-self: auto;
-  justify-self: auto;
-}
-
 .date {
-  justify-self: center;
   text-align: center;
   font-weight: bold;
 }
 
 /* === Countdown Styles === */
 .countdown {
-  width: 80%;
+  flex-flow: row nowrap;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
 }
 
-#countdown span {
+.countdown-span {
+  /*text-wrap: nowrap;*/
+  flex-grow: 1;
   background: rgba(0,0,0,0);
+  display: inline-block;
   color: #000;
-  font-size: 18px;
-  font-weight: normal;
+  padding-left: 1%;
+  padding-right: 1%;
+  border-right: 1px solid #fff;
   text-align: center;
-  width: 25%;
-  display: block;
-  float: left;
-  border-right: 1px solid #FFF;
 }
-#countdown span:last-child {
+
+.countdown span:last-child {
   border-right: 0;
 }
 
 /* === Welcome Message Styles === */
 .welcome {
   font-family: yanone kaffeesatz, Helvetica, sans-serif;
-  padding: 5% 10%;
+  padding: 2rem 3rem;
   text-align: justify;
-  text-justify: inter-word;
 }
 
 /* === Locations Styles === */
 .locations {
-  display: flex;
   flex-flow: column nowrap;
   justify-content: space-between;
   align-items: center;
   gap: 1rem;
 }
 
-.location_address {
+.location {
+  display: flex;
+  flex-flow: column nowrap;
+  justify-content: space-between;
+  align-items: center;
   font-family: yanone kaffeesatz, Helvetica, sans-serif;
-  text-align: center;
 }
 
 #zoldfasPic, #forroPic {
   border-radius: 1rem;
+  width: 65%;
+  margin: 1rem 0;
 }
 
 #zoldfasMap, #forroMap {
@@ -86,6 +90,11 @@ body {
   height: 15rem;
   margin: 0;
   padding: 0;
+}
+
+#zoldfasMap > iframe, #forroMap > iframe {
+  height: 100%;
+  width: 100%;
 }
 
 /* === Form Styles === */

@@ -1,60 +1,28 @@
 
 document.addEventListener("DOMContentLoaded", function() {
+
   displayCountdown();
 
-  // DISPLAYING SUCCESS MESSAGE
+  // CHECK FOR SUCCESS MESSAGE WHEN PAGE LOADS
   const successMessage = localStorage.getItem('successMessage');
   if (successMessage) {
-    document.querySelector("#alert-collapse").classList.add("success");
-    showAlert(successMessage);
-    setTimeout(function() {
-      document.querySelector("#alert-collapse").classList.remove("success");
-    }, 3000);
+    displaySuccess(successMessage);
     localStorage.removeItem('successMessage');
   }
 
-// event listeners related to the questionare
-  hideQuestionare()
-  document.querySelector("#question-attend-yes").addEventListener("click", showQuestionare);
-  document.querySelector("#question-attend-no").addEventListener("click", hideQuestionare);
-
-  document.querySelector("#question-partner-yes").addEventListener("click", showPartnerInfo);
-  document.querySelector("#question-partner-no").addEventListener("click", hidePartnerInfo);
-
-  document.querySelector("#question-have-allergies-yes").addEventListener("click", showAllergiesInput);
-  document.querySelector("#question-have-allergies-no").addEventListener("click", hideAllergiesInput);
-
-  document.querySelector("#question-partner-have-allergies-yes").addEventListener("click", showPartnerAllergiesInput);
-  document.querySelector("#question-partner-have-allergies-no").addEventListener("click", hidePartnerAllergiesInput);
-
-  const fields = [document.querySelector("#name"), 
-                  document.querySelector("#allergies"), 
-                  document.querySelector("#partner-name"), 
-                  document.querySelector("#partner-allergies")];
-  for (let field of fields) {
-    field.addEventListener("input", function() {
-      if(field.value.trim() != "") {
-        field.style.borderColor = "var(--bs-body-bg)";
-      }
-    });
-  }
-
-  // if form validation fails, prevent submittion
-  document.querySelector("#form-questionare").addEventListener("submit", function(event) {
-    if (!validateUserInput()) {
-      event.preventDefault();
-    }
-    else{
-      localStorage.setItem("successMessage", "Form submitted successfully!");
-    }
-  });
+  // FORM RELATED FUNCTIONS
+  hideQuestionare();
+  listenForRadioButtonClick();
+  checkFieldNotEmpty();
+  listenForFormSubmittion();
 });
 
 function displayCountdown() {
-  let countDownDisplay = document.querySelector("#countdown")
+  let countDownDisplay = document.querySelector(".countdown")
 
   let countDownDate = new Date("September 20, 2025 15:00:00").getTime();
 
+  // update the countdown every second
   let x = setInterval(function() {
     let now = new Date().getTime();
     let distance = countDownDate - now;
@@ -64,8 +32,11 @@ function displayCountdown() {
     var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
     var seconds = Math.floor((distance % (1000 * 60)) / 1000);
 
-    countDownDisplay.innerHTML = "<span class='days'>" + days +  " <label>Days</label></span> <span class='hours'>" + hours + " <label>Hours</label></span> <span class='minutes'>"
-    + minutes + " <label>Minutes</label></span> <span class='seconds'>" + seconds + " <label>Seconds</label></span>";
+    countDownDisplay.innerHTML = 
+    "<span class='countdown-span days'>" + days +  " <label>Days</label></span>" +
+    "<span class='countdown-span hours'>" + hours + " <label>Hours</label></span>" +
+    "<span class='countdown-span minutes'>" + minutes + " <label>Minutes</label></span>" +
+    "<span class='countdown-span seconds'>" + seconds + " <label>Seconds</label></span>";
 
     if (distance < 0) {
       clearInterval(x);
@@ -74,11 +45,56 @@ function displayCountdown() {
   }, 1000);
 }
 
+function displaySuccess(message) {
+  document.querySelector("#alert-collapse").classList.add("success");
+    showAlert(message);
+    setTimeout(function() {
+      document.querySelector("#alert-collapse").classList.remove("success");
+    }, 3000);
+}
+
+function listenForRadioButtonClick() {
+  const RADIO_BUTTONS = [
+    document.querySelector("#question-attend-yes"),
+    document.querySelector("#question-attend-no"),
+    document.querySelector("#question-partner-yes"),
+    document.querySelector("#question-partner-no"),
+    document.querySelector("#question-have-allergies-yes"),
+    document.querySelector("#question-have-allergies-no"),
+    document.querySelector("#question-partner-have-allergies-yes"),
+    document.querySelector("#question-partner-have-allergies-no")
+  ];
+
+  for (let rb of RADIO_BUTTONS) {
+    rb.addEventListener("click", function() {
+      if (rb == document.querySelector("#question-attend-yes"))
+        showQuestionare();
+      else if (rb == document.querySelector("#question-attend-no"))
+        hideQuestionare();
+      else if (rb == document.querySelector("#question-partner-yes"))
+        showPartnerInfo();
+      else if (rb == document.querySelector("#question-partner-no"))
+        hidePartnerInfo();
+      else if (rb == document.querySelector("#question-have-allergies-yes"))
+        showAllergiesInput();
+      else if (rb == document.querySelector("#question-have-allergies-no"))
+        hideAllergiesInput();
+      else if (rb == document.querySelector("#question-partner-have-allergies-yes"))
+        showPartnerAllergiesInput();
+      else if (rb == document.querySelector("#question-partner-have-allergies-no"))
+        hidePartnerAllergiesInput();
+    });
+  }
+}
+
 function showQuestionare() {
-  const list = [document.querySelector(".question-allergies"),
+  const list = [
+                document.querySelector(".question-name"),
+                document.querySelector(".question-allergies"),
                 document.querySelector(".question-partner-name"),
                 document.querySelector(".question-partner-have-allergies"),
-                document.querySelector(".question-partner-allergies")];
+                document.querySelector(".question-partner-allergies")
+  ];
 
   document.querySelector("#questionare-description").style.display = "block";
 
@@ -89,11 +105,12 @@ function showQuestionare() {
   }
   
 }
- 
+  
 function hideQuestionare() {
-  document.querySelector("#questionare-description").style.display = "none";
   for (let question of  document.querySelectorAll(".question")) {
-    question.style.display = "none";
+    if (question != document.querySelector(".question-name") && question != document.querySelector(".question-attend")) {
+      question.style.display = "none";
+    }
   }
 }
 
@@ -132,8 +149,8 @@ function validateUserInput(event) {
 
   let invalid = false;
 
-  if (document.querySelector("#alert-collapse").classList.contains("success")) {
-    document.querySelector("#alert-collapse").classList.remove("success");
+  if (!checkField("#name")) {
+    invalid = true;
   }
 
   if (!isAnswerChecked("#question-attend-yes", "#question-attend-no")) {
@@ -141,11 +158,6 @@ function validateUserInput(event) {
   }
 
   if (document.querySelector("#question-attend-yes").checked) {
-    
-    if (!checkField("#name")) {
-      invalid = true;
-    }
-
     if (!isAnswerChecked("#question-have-allergies-yes", "#question-have-allergies-no")) {
       invalid = true;
     }
@@ -162,7 +174,7 @@ function validateUserInput(event) {
 
     if (document.querySelector("#question-partner-yes").checked) {
       if (!checkField("#partner-name")) {
-      invalid = true;
+        invalid = true;
       }
       if (!isAnswerChecked("#question-partner-have-allergies-yes", "#question-partner-have-allergies-no")) {
         invalid = true;
@@ -170,7 +182,7 @@ function validateUserInput(event) {
       if (document.querySelector("#question-partner-have-allergies-yes").checked) {
         if (!checkField("#partner-allergies")) {
           invalid = true;
-          }
+        }
       }
     }
     if (!isAnswerChecked("#question-accommodation-yes", "#question-accommodation-no")) {
@@ -205,4 +217,38 @@ function checkField(fieldId) {
     return false;
   }
   return true;
+}
+
+function checkFieldNotEmpty() {
+  const TEXT_FIELDS = [
+    document.querySelector("#name"), 
+    document.querySelector("#allergies"), 
+    document.querySelector("#partner-name"), 
+    document.querySelector("#partner-allergies")
+  ];
+
+  for (let field of TEXT_FIELDS) {
+    field.addEventListener("input", function() {
+      if(field.value.trim() != "") {
+        resetFieldStyle(field);
+      }
+    });
+  }
+}
+
+function resetFieldStyle(field) {
+  field.style.borderColor = "var(--bs-body-bg)";
+}
+
+
+function listenForFormSubmittion() {
+  document.querySelector("#form-questionare").addEventListener("submit", function(event) {
+    // if form validation fails, prevent submittion
+    if (!validateUserInput()) {
+      event.preventDefault();
+    }
+    else {
+      localStorage.setItem("successMessage", "Form submitted successfully!");
+    }
+  });
 }
